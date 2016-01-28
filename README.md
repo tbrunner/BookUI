@@ -1,5 +1,5 @@
-# RequestHandler
-MEAN stack site built to handle user requests with upvote functionality
+# BookUI
+MEAN stack site built to book ui
 
 1. Install Node
 2. Install MongoDB
