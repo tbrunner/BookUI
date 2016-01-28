@@ -1,0 +1,28 @@
+﻿<div class="jumbotron">
+	<h1 class="text-center">Books</h1>
+
+	<p>{{ message }}</p>
+	<input type="search" ng-model="q.$" placeholder="filter books..." />
+	<ol class="idea-list">
+		<li class="idea-list-element list-group" ng-repeat="book in books | orderBy: '-title': true | filter:q" ng-init="show = false; clicked = false; editable = false; changed = false">
+			<span><span class="" ng-click="show = !show">{{book.BookName}}</span>  <span class="btn btn-default glyphicon glyphicon-edit" ng-click="editable = !editable" ng-show="show && !editable"></span><span class="btn btn-default glyphicon glyphicon-save" ng-click="editable = !editable; saveBook(book, changed);" ng-show="show && editable"></span></span> <!--location='#/edit' --> 	
+			<div class="well well-sm details" ng-show="show">
+			<div>Book Name: <span ng-show="!editable">{{book.BookName}}</span><textarea rows="1" cols="50" name="message" ng-model="book.BookName" ng-show="editable" ng-change="changed = true"></textarea></div>
+			<div>Book Number: <span ng-show="!editable">{{book.BookNumber}}</span><textarea rows="1" cols="3" name="message" ng-model="book.BookNumber" ng-show="editable" ng-change="changed = true"></textarea></div>
+			<div>Mid Start Page: <span ng-show="!editable">{{book.MidStartPage}}</span><textarea rows="1" cols="3" name="message" ng-model="book.MidStartPage" ng-show="editable" ng-change="changed = true"></textarea></div>
+			<div>End Start Page: <span ng-show="!editable">{{book.EndStartPage}}</span><textarea rows="1" cols="3" name="message" ng-model="book.EndStartPage" ng-show="editable" ng-change="changed = true"></textarea></div>
+			<div>Stretch Words: <span ng-show="!editable">{{book.StretchWords}}</span><span ng-repeat="word in book.StretchWords track by $index"><textarea rows="1" cols="3" name="message" ng-model="book.StretchWords[$index]" ng-show="editable" ng-change="changed = true"></textarea></span></div>
+			<div>TODO: Sight Words: {{book.SightWords}}</div>
+			<div>Has Illustrator: <span ng-show="!editable">{{book.HasIllustrator}}</span><input type="checkbox" ng-model="book.HasIllustrator" ng-show="editable" ng-change="changed = true"></input></div>
+			<div>Lesson Number: <span ng-show="!editable">{{book.LessonNumber}}</span><textarea rows="1" cols="3" name="message" ng-model="book.LessonNumber" ng-show="editable" ng-change="changed = true"></textarea></div>
+			<div>Has Country of Origin: <span ng-show="!editable">{{book.HasCountryOfOrigin}}</span><input type="checkbox" ng-model="book.HasCountryOfOrigin" ng-show="editable" ng-change="changed = true"></input></div>
+			<div>Author Location: <span ng-show="!editable">({{book.AuthorLoc.X}},{{book.AuthorLoc.Y}})</span><textarea rows="1" cols="3" name="message" ng-model="book.AuthorLoc.X" ng-show="editable"ng-change="changed = true"></textarea><textarea rows="1" cols="3" name="message" ng-model="book.AuthorLoc.Y" ng-show="editable" ng-change="changed = true"></textarea></div>
+			<div>Illustrator Location: <span ng-show="!editable">({{book.IllustratorLoc.X}},{{book.IllustratorLoc.Y}})</span><textarea rows="1" cols="3" name="message" ng-model="book.IllustratorLoc.X" ng-show="editable" ng-change="changed = true"></textarea><textarea rows="1" cols="3" name="message" ng-model="book.IllustratorLoc.Y" ng-show="editable" ng-change="changed = true"></textarea></div>
+			<div>Title Location: <span ng-show="!editable">({{book.TitleLoc.X}},{{book.TitleLoc.Y}})</span><textarea rows="1" cols="3" name="message" ng-model="book.TitleLoc.X" ng-show="editable"></textarea><textarea rows="1" cols="3" name="message" ng-model="book.TitleLoc.Y" ng-show="editable" ng-change="changed = true"></textarea></div>
+			<div ng-repeat="page in book.Pages">TODO: Page Number: {{page.TextBoxes[0].Lines[0].Text}}</div>
+			<div>TODO: Glossary: {{book.Glossary}} </div>
+			<div>IsReadable: <span ng-show="!editable">{{book.IsReadable}}</span><input type="checkbox" ng-model="book.IsReadable" ng-show="editable" ng-change="changed = true"></input></div>
+			<div>
+		</li>
+	</ol>
+</div>
